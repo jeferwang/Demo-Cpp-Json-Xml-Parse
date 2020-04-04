@@ -42,9 +42,10 @@ void fromJson() {
                           "        \"Name\" : \"jefer\"\n"
                           "}";
     Json::CharReaderBuilder readerBuilder;
-    Json::CharReader *cr = readerBuilder.newCharReader();
-    cr->parse(jsonStr.c_str(),jsonStr.c_str()+jsonStr.length(),&root,&errs);
-    cout<<root["Name"]<<endl;
+//    Json::CharReader *cr = readerBuilder.newCharReader();
+    unique_ptr<Json::CharReader> cr(readerBuilder.newCharReader());
+    cr->parse(jsonStr.c_str(), jsonStr.c_str() + jsonStr.length(), &root, &errs);
+    cout << root["Name"] << endl;
 }
 
 
