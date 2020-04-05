@@ -3,7 +3,9 @@
 //
 
 #include "demo_xml.h"
+
 using namespace std;
+
 void createXml() {
     rapidxml::xml_document<> doc;
     rapidxml::xml_node<> *rot;
@@ -52,7 +54,14 @@ void readXml() {
     doc.parse<0>(szBuf);
 //    std::cout << doc.name() << std::endl;
     rapidxml::xml_node<> *root = doc.first_node();
-    cout<<root->name()<<endl;
+    cout << root->name() << endl;
+
+    rapidxml::xml_node<> *child = root->first_node();
+    do {
+        cout << child->name() << endl;
+        child = child->next_sibling();
+    } while (child != nullptr);
+
 }
 
 
